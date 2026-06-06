@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joke</title>
+  </head>
+  <body>
+    <form action="/" method="POST">
+      <button type="submit" name="category" value="Pun">
+        Generate Random Pun
+      </button>
+      <select name="type">
+        <option value="any" <%= selectedType === "any" ? "selected" : "" %>>Any</option>
+        <option value="single" <%= selectedType === "single" ? "selected" : "" %>>Single</option>
+        <option value="twopart" <%= selectedType === "twopart" ? "selected" : "" %>>Two Part</option>
+      </select>
+    </form>
+
+    <% if (data.type === "single") { %>
+      <p><%= data.joke%></p>
+  <%  } else if (data.type === "twopart") { %>
+    <p><%= data.setup %></p>
+    <p><%= data.delivery %></p>
+  <% } %>
+  </body>
+</html>
