@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="/search" method="POST">
+      <input type="text" name="search" placeholder="search country" />
+      <button type="submit">Search</button>
+    </form>
+     <% countries.forEach(country => { %>
+    <p><%= country.name.official %></p>
+    <p><%= country.name.common %></p>
+    <p><%= country.capital ? country.capital[0] : "No capital found." %></p>
+    <p>
+      <%= country.currencies && Object.values(country.currencies).length > 0
+        ? Object.values(country.currencies)[0].name
+        : "No currency found." %>
+    </p>
+  <% }) %>
+  </body>
+</html>

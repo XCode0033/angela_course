@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Field Search</title>
+</head>
+<body>
+  <h1>Country Field Search</h1>
+
+  <form action="/search" method="POST">
+    <input
+      type="text"
+      name="countryName"
+      placeholder="Enter a country"
+      value="<%= searchTerm %>"
+    />
+
+    <p>Choose fields:</p>
+
+    <label>
+      <input type="checkbox" name="fields" value="name"
+      <%= selectedFields.includes("name") ? "checked" : "" %>>
+      Name
+    </label>
+
+    <label>
+      <input type="checkbox" name="fields" value="capital"
+      <%= selectedFields.includes("capital") ? "checked" : "" %>>
+      Capital
+    </label>
+
+    <label>
+      <input type="checkbox" name="fields" value="languages"
+      <%= selectedFields.includes("languages") ? "checked" : "" %>>
+      Languages
+    </label>
+
+    <label>
+      <input type="checkbox" name="fields" value="currencies"
+      <%= selectedFields.includes("currencies") ? "checked" : "" %>>
+      Currencies
+    </label>
+
+    <button type="submit">Search</button>
+  </form>
+
+  <% if (error) { %>
+    <p><%= error %></p>
+  <% } %>
+
+  <% if (country) { %>
+    <hr>
+
+    <% if (country.name) { %>
+      <p><strong>Common Name:</strong> <%= country.name.common %></p>
+      <p><strong>Official Name:</strong> <%= country.name.official %></p>
+    <% } %>
+
+    <% if (country.capital && country.capital.length > 0) { %>
+      <p><strong>Capital:</strong> <%= country.capital[0] %></p>
+    <% } %>
+
+    <% if (country.languages) { %>
+      <p><strong>Languages:</strong> <%= Object.values(country.languages).join(", ") %></p>
+    <% } %>
+
+    <% if (country.currencies) { %>
+      <p><strong>Currency Names:</strong>
+        <%= Object.values(country.currencies).map(currency => currency.name).join(", ") %>
+      </p>
+    <% } %>
+  <% } %>
+</body>
+</html>
