@@ -22,6 +22,7 @@ app.get("/", async (req, res) => {
     searchTerm: "",
   });
 });
+
 app.post("/search", async (req, res) => {
   try {
     const countryName = req.body.countryName.trim();

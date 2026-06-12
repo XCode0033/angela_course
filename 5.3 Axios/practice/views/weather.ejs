@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+  </head>
+  <body>
+    <form action="/weather/search" method="POST">
+      <input type="text" name="cityName"  placeholder="Search City Name" />
+      <button type="submit">Enter</button>
+      <label><input type="radio" name="unit" value="fahrenheit">Fahrenheit</label>
+        <label><input type="radio" name="unit" value="celsius">Celsius</label>
+    </form>
+    
+    <p>ejs thing</p>
+    <% if( cityName === "city1") { %>
+        <p><%= cityName %></p>
+        <p><%= temperature %></p>
+   <%  } %>
+  </body>
+</html>

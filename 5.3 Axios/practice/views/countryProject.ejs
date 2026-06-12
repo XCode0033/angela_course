@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Country Project</title>
+  </head>
+  <body>
+    <form action="/search" method="POST">
+      <input type="text" placeholder="Enter Country Name" name="countryName" />
+      <select name="dropdown">
+        <option value="name">Name</option>
+        <option value="capital">Capital</option>
+        <option value="region">Region</option>
+        <option value="languages">Languages</option>
+        <option value="currencies">Currencies</option>
+      </select>
+      <button type="submit" value="submit">Submit</button>
+
+      <p><%= countries[0].common %></p>
+    </form>
+  </body>
+</html>
